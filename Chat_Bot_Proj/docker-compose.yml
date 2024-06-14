@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - C:/Users/Lenovo/Downloads/Chat-Bot/results/model:/app/model  # Монтируем директорию с моделью
+    environment:
+      - FLASK_ENV=development

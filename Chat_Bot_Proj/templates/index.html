@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with AI</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f9;
+          margin: 0;
+          padding: 0;
+      }
+      .container {
+          max-width: 600px;
+          margin: 50px auto;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+      }
+      textarea {
+          width: 100%;
+          height: 100px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-bottom: 20px;
+          font-size: 16px;
+          font-family: Arial, sans-serif;
+      }
+      button {
+          background-color: #007bff;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+      }
+      button:hover {
+          background-color: #0056b3;
+      }
+      .question, .answer {
+          margin-bottom: 20px;
+      }
+      .question h2, .answer h2 {
+          margin-bottom: 10px;
+          font-size: 18px;
+      }
+      .question p, .answer p {
+          font-size: 16px;
+          line-height: 1.5;
+      }
+      .answer a {
+          color: #007bff;
+          text-decoration: none;
+      }
+      .answer a:hover {
+          text-decoration: underline;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chat with AI</h1>
+    <form method="POST" action="/ask">
+      <div>
+        <textarea name="question" placeholder="Enter your question here..."></textarea>
+      </div>
+      <div>
+        <button type="submit">Ask</button>
+      </div>
+    </form>
+    {% if question %}
+    <div class="question">
+      <h2>Question:</h2>
+      <p>{{ question }}</p>
+    </div>
+    <div class="answer">
+      <h2>Answer:</h2>
+      <p>{{ answer|safe }}</p> <!-- Используем фильтр safe для HTML -->
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
